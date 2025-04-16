@@ -1,1 +1,805 @@
-Hello world
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Opéras Miniatures - Fantasio</title>
+    <style>
+        /* Variables pour les couleurs */
+        :root {
+            --primary-yellow: #f9c82d;
+            --primary-red: #ce3737;
+            --primary-green: #a7c435;
+            --primary-blue: #5b7b9b;
+            --background: #f9f6f0;
+            --text-dark: #22293a;
+        }
+
+        /* Styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--text-dark);
+            padding: 15px 0;
+        }
+
+        nav ul {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-yellow);
+        }
+
+        /* Contenu principal */
+        main {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        section {
+            margin-bottom: 60px;
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        h1::after, h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-yellow);
+            margin-top: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        /* Section héro */
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .hero-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        /* Section objectifs avec les blocs colorés */
+        .objectives {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .objective {
+            padding: 25px;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .objective:nth-child(1) {
+            background-color: var(--primary-yellow);
+        }
+
+        .objective:nth-child(2) {
+            background-color: var(--primary-green);
+        }
+
+        .objective:nth-child(3) {
+            background-color: var(--primary-red);
+        }
+
+        .objective h3 {
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        /* Section personnages */
+        .characters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .character-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .character-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .character-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .character-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .character-info {
+            padding: 20px;
+        }
+
+        .character-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .character-role {
+            color: var(--primary-red);
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        /* Section calendrier */
+        #calendar {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .dates-list {
+            list-style: none;
+        }
+        
+        .dates-list li {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .dates-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .date {
+            font-weight: bold;
+            color: var(--primary-red);
+        }
+        
+        .location {
+            color: var(--text-dark);
+        }
+
+        /* Section contact */
+        .contact-container {
+            display: flex;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .contact-form {
+            flex: 2;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: var(--primary-yellow);
+            color: var(--text-dark);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #e9b92a;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-blue);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            transition: background-color 0.3s;
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-red);
+        }
+
+        /* Pied de page */
+        footer {
+            background-color: var(--text-dark);
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-yellow);
+            margin-bottom: 20px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--primary-yellow);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #444;
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero {
+                flex-direction: column;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-background">
+            <!-- L'image de fond sera appliquée via CSS -->
+            <div class="header-overlay">
+                <div class="header-content">
+                    <div class="logo-container">
+                        <img src="ressources/logo.png" alt="Logo Les Opéras Miniatures" class="logo-image">
+                        <h1 class="logo-text">Les Opéras Miniatures</h1>
+                    </div>
+                    <div class="tagline">
+                        <p>Démocratiser l'opéra à travers une expérience unique et itinérante</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <style>
+        /* Styles pour le nouveau header */
+        .header-background {
+            background: url('ressources/troupe.png') no-repeat center center;
+            background-size: cover;
+            height: 500px;
+            position: relative;
+        }
+        
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4); /* Filtre semi-transparent */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .logo-image {
+            width: 80px;
+            height: auto;
+            margin-right: 15px;
+        }
+        
+        .logo-text {
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .tagline {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .tagline p {
+            color: white;
+            font-size: 2rem;
+            font-weight: 700; /* plus gras */
+            text-align: center;
+            max-width: 800px;
+            padding: 15px 25px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9), 0 0 10px rgba(0, 0, 0, 0.7); /* ombres plus prononcées */
+        }
+        
+        @media (max-width: 768px) {
+            .logo-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo-image {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            
+            .logo-text {
+                font-size: 2rem;
+            }
+            
+            .tagline p {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+
+    <nav>
+        <ul>
+            <li><a href="#projet">Le Projet</a></li>
+            <li><a href="#fantasio">Fantasio</a></li>
+            <li><a href="#personnages">Les Personnages</a></li>
+            <li><a href="#equipe">L'Équipe</a></li>
+            <li><a href="#calendar">Dates</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-image">
+                <img src="ressources/hero-fantasio.png" alt="Les Opéras Miniatures - Fantasio" />
+            </div>
+            <div class="hero-content">
+                <h1>FANTASIO</h1>
+                <p>Un opéra de Jacques Offenbach présenté par Les Opéras Miniatures</p>
+                <p>Lors du mariage arrangé du prince de Mantoue et de la princesse de Bavière qui devait sceller la paix entre les deux royaumes, Fantasio, étudiant malicieux, s'amuse à saboter la fête des fiançailles...</p>
+                <p>Une expérience théâtrale et musicale immersive, fidèle à l'esprit et à la magie de l'œuvre originale.</p>
+            </div>
+        </section>
+
+        <section id="projet">
+            <h2>Notre Projet</h2>
+            <p>Nous sommes cinq amis du Conservatoire unis par notre passion pour la musique, dont l'engagement premier est de faire découvrir l'opéra à un large public.</p>
+            <p>Dans cette optique, nous avons choisi de nous immerger dans l'univers de l'opéra Fantasio, une œuvre peu jouée du compositeur Jacques Offenbach.</p>
+            
+            <div class="objectives">
+                <div class="objective">
+                    <h3>Démocratisation de l'Opéra</h3>
+                    <p>Notre projet s'engage résolument à rendre l'opéra accessible à un public diversifié. En proposant une version abrégée de Fantasio, à prix libre pour les spectateurs, nous aspirons à démocratiser cet art.</p>
+                </div>
+                <div class="objective">
+                    <h3>Création d'une expérience unique</h3>
+                    <p>Nous avons à cœur d'offrir au public une expérience joyeuse et innovante, un opéra de poche qui propose ses propres décors, costumes et mise en scène au service d'un espace artistique qui invite au rêve.</p>
+                </div>
+                <div class="objective">
+                    <h3>Médiation et transmission</h3>
+                    <p>Notre projet se distingue par sa mobilité, nous permettant ainsi d'apporter l'opéra là où il est moins accessible. En collaborant avec divers publics, nous nous engageons dans une démarche pédagogique.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="fantasio">
+            <h2>Fantasio, un opéra de J. Offenbach</h2>
+            <p>Offenbach, habituellement connu pour ses opéras bouffe, a choisi d'adapter une pièce d'Alfred de Musset aux accents romantiques et mélancoliques. C'est pourquoi il a ajusté son style musical pour construire une œuvre plus poétique et contemplative, bien que non dénuée de passages humoristiques et légers.</p>
+            
+            <div style="margin-top: 30px; background-color: var(--primary-green); padding: 20px; border-radius: 10px;">
+                <h3>Un format de poche et fait maison</h3>
+                <p>Ayant choisi Fantasio dans l'idée de transmettre une oeuvre d'Offenbach et d'Alfred de Musset, riche en culture et en histoire, nous avons été séduits par la dualité du parlé théâtral et du chanté lyrique, permettant de révéler l'objectif principal du genre opératique : celui de raconter une histoire en mêlant plusieurs arts.</p>
+            </div>
+        </section>
+
+        <section id="personnages">
+            <h2>Les Personnages</h2>
+            <div class="characters">
+                <div class="character-card">
+                    <div class="character-image">
+                        <img src="ressources/fantasio.png" alt="Fantasio" />
+                    </div>
+                    <div class="character-info">
+                        <div class="character-name">Fantasio</div>
+                        <div class="character-role">Étudiant malicieux</div>
+                        <p>Jeune homme désœuvré et désargenté doté d'un esprit piquant et irrévérencieux. Il est aussi un idéaliste mélancolique rêvant d'une existence différente.</p>
+                    </div>
+                </div>
+                
+                <div class="character-card">
+                    <div class="character-image">
+                        <img src="ressources/elsbeth.png" alt="Elsbeth" />
+                    </div>
+                    <div class="character-info">
+                        <div class="character-name">Elsbeth de Bavière</div>
+                        <div class="character-role">Princesse</div>
+                        <p>La Princesse est une jeune fille pleine de candeur et d'amour de son prochain. Elle aspire à un amour véritable mais est trop soumise à son père pour se rebeller.</p>
+                    </div>
+                </div>
+                
+                <div class="character-card">
+                    <div class="character-image">
+                        <img src="ressources/carlo.png" alt="Carlo II" />
+                    </div>
+                    <div class="character-info">
+                        <div class="character-name">Carlo II de Gonzague</div>
+                        <div class="character-role">Prince de Mantoue</div>
+                        <p>Le prince est un puissant aristocrate italien. Arrogant, maniéré et relativement simple d'esprit, il a peu conscience de la façon dont il est perçu des autres.</p>
+                    </div>
+                </div>
+                
+                <div class="character-card">
+                    <div class="character-image">
+                        <img src="ressources/marinoni.png" alt="Marinoni" />
+                    </div>
+                    <div class="character-info">
+                        <div class="character-name">Marinoni</div>
+                        <div class="character-role">Aide de camp / Colonel</div>
+                        <p>Officier d'une loyauté indéfectible et à l'esprit rigoureux et cartésien qui tend cependant à manquer de finesse et être gauche dans les relations humaines.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="equipe">
+            <h2>Notre Équipe</h2>
+            <div class="characters">
+                <div class="character-card">
+                    <div class="character-image">
+                        <img src="ressources/lea.png" alt="Léa Mafille" />
+                    </div>
+                    <div class="character-info">
+                        <div class="character-name">Léa Mafille</div>
+                        <div class="character-role">Mezzo-soprano (Fantasio)</div>
+                        <p>Pétillante et passionnée, Léa, deux fois travestie - en garçon puis en bouffon - incarne un Fantasio plein d'esprit et de malice.</p>
+                    </div>
+                </div>
+                
+                <div class="character-card">
+                    <div class="character-image">
+                        <img src="ressources/ninnog.png" alt="Ninnog Mémin" />
+                    </div>
+                    <div class="character-info">
+                        <div class="character-name">Ninnog Mémin</div>
+                        <div class="character-role">Soprano (Elsbeth)</div>
+                        <p>Du haut de son balcon, cette princesse Elsbeth vous enchantera par sa voix cristalline !</p>
+                    </div>
+                </div>
+                
+                <div class="character-card">
+                    <div class="character-image">
+                        <img src="ressources/sebastien.png" alt="Sébastien Altounian" />
+                    </div>
+                    <div class="character-info">
+                        <div class="character-name">Sébastien Altounian</div>
+                        <div class="character-role">Baryton (Carlo II)</div>
+                        <p>En bleu de travail le matin, en blouse blanche le midi et en habit rose de prince le soir, ce prince de Mantoue vous surprendra par ses nombreuses facettes !</p>
+                    </div>
+                </div>
+                
+                <div class="character-card">
+                    <div class="character-image">
+                        <img src="ressources/aurel.png" alt="Aurel Barré" />
+                    </div>
+                    <div class="character-info">
+                        <div class="character-name">Aurel Barré</div>
+                        <div class="character-role">Ténor (Marinoni)</div>
+                        <p>Aide de camp dévoué, espion maladroit et ténor claironnant, ce Marinoni est assurément un homme polyvalent.</p>
+                    </div>
+                </div>
+                
+                <div class="character-card">
+                    <div class="character-image">
+                        <img src="ressources/anaelle.png" alt="Anaëlle Reitan" />
+                    </div>
+                    <div class="character-info">
+                        <div class="character-name">Anaëlle Reitan</div>
+                        <div class="character-role">Pianiste</div>
+                        <p>Pour accompagner notre bouffon il nous faut bien un ménestrel, Anaëlle en pianiste royale de la cour est l'artisan principal du tissu musical de notre spectacle.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="calendar">
+            <h2>Nos Prochaines Dates</h2>
+            <div id="upcoming-events">
+                <ul class="dates-list">
+                    <li>
+                        <span class="date">13 avril 2025</span>
+                        <span class="location">Saint-Cyr-au-Mont-d'Or (69)</span>
+                    </li>
+                    <li>
+                        <span class="date">19 juin 2025</span>
+                        <span class="location">Caluire (69)</span>
+                    </li>
+                    <li>
+                        <span class="date">27 juin 2025</span>
+                        <span class="location">Brignais (69)</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contactez-nous</h2>
+            <div class="contact-container-simple">
+                <div class="contact-info-centered">
+                    <p>Pour toute question concernant notre opéra itinérant :</p>
+                    <p class="email-contact"><strong>Email:</strong> <a href="mailto:lesoperasminiatures@gmail.com">lesoperasminiatures@gmail.com</a></p>
+                    <div class="social-links-container">
+                        <p><strong>Suivez-nous sur les réseaux sociaux :</strong></p>
+                        <div class="social-links">
+                            <a href="#" class="social-link">
+                                <img src="ressources/icon-facebook.png" alt="Facebook" class="social-icon">
+                                <span>Les Opéras Miniatures</span>
+                            </a>
+                            <a href="#" class="social-link">
+                                <img src="ressources/icon-instagram.png" alt="Instagram" class="social-icon">
+                                <span>@les_operas_miniatures</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <style>
+            .contact-container-simple {
+                display: flex;
+                justify-content: center;
+                margin-top: 30px;
+            }
+            
+            .contact-info-centered {
+                text-align: center;
+                max-width: 600px;
+            }
+            
+            .email-contact {
+                font-size: 1.2rem;
+                margin: 20px 0;
+            }
+            
+            .email-contact a {
+                color: var(--primary-red);
+                text-decoration: none;
+            }
+            
+            .email-contact a:hover {
+                text-decoration: underline;
+            }
+            
+            .social-links-container {
+                margin-top: 30px;
+            }
+            
+            .social-links {
+                display: flex;
+                justify-content: center;
+                gap: 30px;
+                margin-top: 15px;
+            }
+            
+            .social-link {
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                color: var(--text-dark);
+                padding: 10px 15px;
+                border-radius: 8px;
+                transition: background-color 0.3s, transform 0.3s;
+            }
+            
+            .social-link:hover {
+                background-color: #f0f0f0;
+                transform: translateY(-3px);
+            }
+            
+            .social-icon {
+                width: 30px;
+                height: 30px;
+                margin-right: 10px;
+            }
+        </style>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Les Opéras Miniatures</h3>
+                <p>Notre mission est de démocratiser l'opéra et de le rendre accessible à tous les publics grâce à des formats miniatures et itinérants.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Liens rapides</h3>
+                <ul>
+                    <li><a href="#projet">Le Projet</a></li>
+                    <li><a href="#fantasio">Fantasio</a></li>
+                    <li><a href="#personnages">Les Personnages</a></li>
+                    <li><a href="#equipe">L'Équipe</a></li>
+                    <li><a href="#calendar">Dates</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Suivez-nous</h3>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram (@les_operas_miniatures)</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Les Opéras Miniatures. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Variable pour l'API Google Calendar que vous pourrez remplacer
+        const GOOGLE_CALENDAR_API_KEY = 'VOTRE_CLE_API_GOOGLE_CALENDAR';
+        const GOOGLE_CALENDAR_ID = 'VOTRE_ID_CALENDRIER_GOOGLE';
+        
+        // Fonction pour charger les événements du calendrier Google
+        function loadCalendarEvents() {
+            // Cette fonction sera implémentée pour charger dynamiquement les événements
+            // depuis Google Calendar lorsque vous aurez configuré votre API
+            console.log("API Key:", GOOGLE_CALENDAR_API_KEY);
+            console.log("Calendar ID:", GOOGLE_CALENDAR_ID);
+            
+            // Pour l'instant, les dates sont codées en dur dans le HTML
+        }
+        
+        // Chargement des événements au chargement de la page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialisation du calendrier
+            loadCalendarEvents();
+        });
+    </script>
+</body>
+</html>
