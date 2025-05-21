@@ -276,6 +276,13 @@
             background-color: #e9b92a;
         }
 
+        .separator {
+            border: none;
+            border-top: 2px solid #ccc;
+            margin: 40px auto;
+            width: 80%;
+        }
+
         .social-links {
             display: flex;
             gap: 15px;
@@ -662,7 +669,11 @@
                         <span class="location">Lyon 8ème (69)</span
                     </li>
                 </ul>
+            <hr class="separator">
             </div>
+            <div style="display: flex; justify-content: center;">
+                <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=Europe%2FParis&showPrint=0&hl=fr&showCalendars=0&showTz=0&title=%5BLes%20Op%C3%A9ras%20Miniatures%5D%20-%20Dates%20concert&showTitle=0&src=ZTc5NzE4NzI1YmRiMmM4MDRkYjEzYzQzOWI5NmVjNmU5NzRkYmQwNmMwMjU5Yjg0ZDdiYmI0MDM4YTU5MWU1Y0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23E67C73" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+            </div>    
         </section>
 
         <section id="contact">
@@ -767,8 +778,8 @@
 
     <script>
         // Variable pour l'API Google Calendar que vous pourrez remplacer
-        const GOOGLE_CALENDAR_API_KEY = 'VOTRE_CLE_API_GOOGLE_CALENDAR';
-        const GOOGLE_CALENDAR_ID = 'VOTRE_ID_CALENDRIER_GOOGLE';
+        const GOOGLE_CALENDAR_API_KEY = 'GOOGLE_CALENDAR_API_KEY';
+        const GOOGLE_CALENDAR_ID = 'GOOGLE_CALENDAR_ID';
         
         // Fonction pour charger les événements du calendrier Google
         function loadCalendarEvents() {
