@@ -378,6 +378,28 @@
             margin-top: 40px;
         }
 
+        .dates-list li {
+            align-items: center;
+        }
+
+        .qrcode {
+            display: flex;
+            align-items: center;
+        }
+
+        .qrcode img {
+            max-width: 100px;       /* Taille max en pixels */
+            width: 100%;           /* S’adapte au conteneur */
+            height: auto;
+            display: block;
+        }
+
+        @media (max-width: 600px) {
+            .qrcode img {
+                max-width: 60px;
+            }
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .header-content {
@@ -719,11 +741,18 @@
                         <span class="date">27 juin 2025</span>
                         <span class="time">20h</span>
                         <span class="location">Brignais (69)</span>
+                        <span class="qrcode"><a href="https://www.helloasso.com/associations/association-pour-une-scolarite-ambitieuse-et-joyeuse-des-enfants-atypiques/evenements/fantasio"><img src="ressources/qrcode_27-06-2025.png" alt="Billetterie" /></a></span>
                     </li>
                     <li>
                         <span class="date">1er juillet 2025</span>
                         <span class="time">19h</span>
-                        <span class="location">Lyon 8ème (69)</span
+                        <span class="location">Lyon 8ème (69)</span>
+                        <span class="qrcode"><a href="https://www.helloasso.com/associations/association-adeona-lyon/evenements/billeterie-fantasio-1"><img src="ressources/qrcode_01-07-2025.png" alt="Billetterie" /></a></span>
+                    <li>
+                        <span class="date"></span>
+                        <span class="time"></span>
+                        <span class="location"></span>
+                        <span class="qrcode">Clic or Scan ⬆️</span>
                     </li>
                 </ul>
             <hr class="separator">
